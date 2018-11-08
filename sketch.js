@@ -18,6 +18,7 @@ var rewind_button_x = 1200;
 var rewind_button_y = 75;
 
 function preload() {
+    console.log("Loading assets...")
     font = loadFont('assets/bebas.otf');
     clock_sound = loadSound('assets/ui/enter.wav');
     init_sound = loadSound('assets/ui/eshopintro.wav');
@@ -27,6 +28,7 @@ function preload() {
 }
 
 function setup() {
+    console.log("Preparing canvas...")
     var cnv = createCanvas(windowWidth, windowHeight);
     cnv.style('display', 'block');
     pixelDensity(1);
@@ -45,7 +47,7 @@ function setup() {
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
-    console.log("Resized!");
+    console.log("Window resized.");
 }
 
 function draw() {

@@ -1,0 +1,147 @@
+Issued lw
+
+[CLOCK 1]
+Instruction lw is at stage 1
+Advancing lw
+
+[CLOCK 2]
+Instruction lw is at stage 2
+Read operands for lw
+Can't issue addi
+
+[CLOCK 3]
+Instruction lw is at stage 3
+Executing lw
+
+[CLOCK 4]
+Instruction lw is at stage 4
+Executing lw
+
+[CLOCK 5]
+Instruction lw is at stage 5
+Advancing lw
+
+[CLOCK 6]
+Instruction lw is at stage 6
+Write back for lw
+Successful write-back for lw
+Issued addi
+Instruction addi is at stage 1
+Advancing addi
+
+[CLOCK 7]
+Instruction addi is at stage 2
+Read operands for addi
+Issued lw
+
+[CLOCK 8]
+Instruction lw is at stage 1
+Advancing lw
+Instruction addi is at stage 3
+Executing addi
+
+[CLOCK 9]
+Instruction lw is at stage 2
+Read operands for lw
+Can't issue addi
+Instruction addi is at stage 5
+Advancing addi
+
+[CLOCK 10]
+Instruction lw is at stage 3
+Executing lw
+Instruction addi is at stage 6
+Write back for addi
+Successful write-back for addi
+Can't issue addi
+
+[CLOCK 11]
+Instruction lw is at stage 4
+Executing lw
+
+[CLOCK 12]
+Instruction lw is at stage 5
+Advancing lw
+
+[CLOCK 13]
+Instruction lw is at stage 6
+Write back for lw
+Successful write-back for lw
+Issued addi
+Instruction addi is at stage 1
+Advancing addi
+
+[CLOCK 14]
+Instruction addi is at stage 2
+Read operands for addi
+Issued add
+Instruction add is at stage 1
+Advancing add
+
+[CLOCK 15]
+Instruction addi is at stage 3
+Executing addi
+Instruction add is at stage 2
+Read operands for add
+Issued sw
+
+[CLOCK 16]
+Instruction sw is at stage 1
+Advancing sw
+Instruction addi is at stage 5
+Advancing addi
+Instruction add is at stage 3
+Executing add
+
+[CLOCK 17]
+Instruction sw is at stage 2
+Read operands for sw
+Can't issue addi
+Instruction addi is at stage 6
+Write back for addi
+Successful write-back for addi
+Issued addi
+Instruction add is at stage 5
+Advancing add
+
+[CLOCK 18]
+Instruction sw is at stage 3
+Executing sw
+Instruction addi is at stage 1
+Advancing addi
+Instruction add is at stage 6
+Write back for add
+Successful write-back for add
+
+[CLOCK 19]
+Instruction sw is at stage 4
+Executing sw
+Instruction addi is at stage 2
+Read operands for addi
+
+[CLOCK 20]
+Instruction sw is at stage 5
+Advancing sw
+Instruction addi is at stage 3
+Executing addi
+
+[CLOCK 21]
+Instruction sw is at stage 6
+Write back for sw
+Successful write-back for sw
+Instruction addi is at stage 5
+Advancing addi
+
+[CLOCK 22]
+Instruction addi is at stage 6
+Write back for addi
+Successful write-back for addi
+
+[CLOCK 23]
+lw $2 $4 None	{1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+addi $2 $2 INC1	{1: 6, 2: 7, 3: 8, 4: 8, 5: 9}
+lw $3 $4 None	{1: 8, 2: 9, 3: 10, 4: 11, 5: 12}
+addi $3 $3 INC2	{1: 13, 2: 14, 3: 15, 4: 15, 5: 16}
+add $5 $2 $3	{1: 14, 2: 15, 3: 16, 4: 16, 5: 17}
+sw None $5 $4	{1: 16, 2: 17, 3: 18, 4: 19, 5: 20}
+addi $4 $4 4	{1: 18, 2: 19, 3: 20, 4: 20, 5: 21}
