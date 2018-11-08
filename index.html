@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Scoreboarding</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="tufte.css">
+    <!-- Text box -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="input.js"></script>
-    
+    <!-- Syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
+
 </head>
 <body>
     <article>
@@ -17,12 +21,20 @@
         <p class="subtitle">SSC0114 - Arquitetura de Computadores @ ICMC - Universidade de São Paulo.</p>
 
         <p>Insira as instruções a serem executadas.</p>
-        <form action="simulator.html">
-            <textarea class='autoExpand' rows='5' data-min-rows='5' placeholder='Instruções Assembly MIPS'></textarea>
+        <form action="simulator/simulator.html">
+            <div id="aceEditor">Test</div>
             <br>
-            <button type="submit"><span>Iniciar simulação</span></button>
+            <button type="submit"><span>INICIAR</span></button>
         </form>   
-        <!-- <a href="simulator.html">Acesse o simulador.</a> -->
     </article>
+
+    <script>
+            var editor = ace.edit("aceEditor");
+            editor.setTheme("ace/theme/solarized_light");
+            editor.session.setMode("ace/mode/assembly_x86");
+            var code = editor.getValue();
+            console.log("Code is " + code);
+            editor.setValue("lw $2, BASEA($4)\naddi $2, $2, INC1\nlw $3, BASEB($4)\naddi $3, $3, INC2\nadd $5, $2, $3\nsw $5, BASEC($4)\naddi $4, $4, 4");
+        </script>
 </body>
 </html>
