@@ -20,11 +20,6 @@ var rewind_button_y = 75;
 function preload() {
     console.log("Loading assets...")
     font = loadFont('assets/bebas.otf');
-    clock_sound = loadSound('assets/ui/enter.wav');
-    init_sound = loadSound('assets/ui/eshopintro.wav');
-    dada_sound = loadSound('assets/ui/dada3.wav');
-    write_sound = loadSound('assets/ui/album.wav');
-
 }
 
 function setup() {
@@ -42,7 +37,6 @@ function setup() {
     yvalues = new Array(floor(400/xspacing));
 
     windchime.soundNewUser();
-    init_sound.play();
 }
 
 function windowResized() {
@@ -141,6 +135,8 @@ function draw() {
 
     text_x = 0;
     textAlign(LEFT);
+    stroke("#665c84");
+    fill("#665c84");
     text("Register", initial_x + text_x, 80);
     text_x += cell_width + 5;
     text("Unit", initial_x + text_x, 80);
@@ -254,11 +250,9 @@ function draw() {
 }
 
 function mouseClicked() {
-    write_sound.play();
     if (dist(mouseX, mouseY, clock_button_x * 0.8, clock_button_y * 0.8) <= 20) {
         if (clock < 30) {
             clock += 1;
-            clock_sound.play();
             theta_speed = map(clock, 0, 30, 0.01, 0.2);
         }
     }
@@ -266,13 +260,11 @@ function mouseClicked() {
     if (dist(mouseX, mouseY, rewind_button_x * 0.8, rewind_button_y * 0.8) <= 20) {
         if (clock > 0) {
             clock -= 1;
-            clock_sound.play();
             theta_speed = map(clock, 0, 30, 0.01, 0.2);
         }
     }
 
     if (clock == 30) {
-        dada_sound.play();
         windchime.soundNewUser();
     }
 }

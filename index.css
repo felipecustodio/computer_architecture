@@ -28,21 +28,6 @@ html,body {
   background: #fbeed7!important;
 }
 
-ul {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 1.2em;
-    text-indent: -1.2em;
-  }
-
-li:before {
-  content: "►";
-  display: block;
-  float: left;
-  width: 1.2em;
-  color: #f67280;
-}
-
 a,h1 {
 -o-transition:.5s;
 -ms-transition:.5s;
@@ -54,6 +39,7 @@ transition-timing-function: ease
 
 a:hover {
   color: #f67280;
+  cursor:pointer;
 }
 
 h1:hover {
@@ -86,8 +72,9 @@ button {
   background: #ffba5a;
   padding: 18px 0 11px;
   cursor: pointer;
-  border: 0;
-  border-radius: 2px;
+  /* border: 0; */
+  border: #665c84;
+  border-radius: 5px;
   min-width: 120px;
   overflow: hidden;
 
