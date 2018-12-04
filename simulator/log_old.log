@@ -1,0 +1,130 @@
+Parsing source code...
+0 lw $2 $4 None
+1 addi $2 $2 INC1
+2 lw $3 $4 None
+3 addi $3 $3 INC2
+4 add $5 $2 $3
+5 sw None $5 $4
+6 addi $4 $4 4
+
+[CLOCK 1]
+Issued lw
+Instruction lw is at stage read_op
+Read operands for lw
+
+[CLOCK 2]
+Can't issue addi
+Instruction lw is at stage exec_begin
+
+[CLOCK 3]
+Can't issue addi
+Instruction lw is at stage exec_end
+
+[CLOCK 4]
+Can't issue addi
+Instruction lw is at stage write_back
+Write back for lw
+
+[CLOCK 5]
+Issued addi
+Instruction addi is at stage read_op
+Read operands for addi
+
+[CLOCK 6]
+Issued lw
+Instruction lw is at stage read_op
+Read operands for lw
+Instruction addi is at stage exec_begin
+
+[CLOCK 7]
+Can't issue addi
+Instruction lw is at stage exec_begin
+Instruction addi is at stage write_back
+Write back for addi
+
+[CLOCK 8]
+Can't issue addi
+Instruction lw is at stage exec_end
+
+[CLOCK 9]
+Can't issue addi
+Instruction lw is at stage write_back
+Write back for lw
+
+[CLOCK 10]
+Issued addi
+Instruction addi is at stage read_op
+Read operands for addi
+
+[CLOCK 11]
+Issued add
+Instruction addi is at stage exec_begin
+Instruction add is at stage read_op
+Read operands for add
+
+[CLOCK 12]
+Issued sw
+Instruction sw is at stage read_op
+Read operands for sw
+Instruction addi is at stage write_back
+Write back for addi
+Instruction add is at stage exec_begin
+
+[CLOCK 13]
+Issued addi
+Instruction sw is at stage exec_begin
+Instruction addi is at stage read_op
+Read operands for addi
+Instruction add is at stage write_back
+Write back for add
+
+[CLOCK 14]
+Instruction sw is at stage exec_end
+Instruction addi is at stage exec_begin
+
+[CLOCK 15]
+Instruction sw is at stage write_back
+Write back for sw
+Instruction addi is at stage write_back
+Write back for addi
+
+[CLOCK 16]
+
+[CLOCK 17]
+
+[CLOCK 18]
+
+[CLOCK 19]
+
+[CLOCK 20]
+
+[CLOCK 21]
+
+[CLOCK 22]
+
+[CLOCK 23]
+
+[CLOCK 24]
+
+[CLOCK 25]
+
+[CLOCK 26]
+
+[CLOCK 27]
+
+[CLOCK 28]
+
+[CLOCK 29]
+
+[CLOCK 30]
+
+[CLOCK 31]
+
+Execution finished.
+lw $2 $4 None	{'issue': 1, 'read_op': 1, 'exec_begin': 2, 'exec_end': 3, 'write_back': 4, 'finished': 5}
+addi $2 $2 INC1	{'issue': 5, 'read_op': 5, 'exec_begin': 6, 'exec_end': 6, 'write_back': 7, 'finished': 8}
+lw $3 $4 None	{'issue': 6, 'read_op': 6, 'exec_begin': 7, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+addi $3 $3 INC2	{'issue': 10, 'read_op': 10, 'exec_begin': 11, 'exec_end': 11, 'write_back': 12, 'finished': 13}
+add $5 $2 $3	{'issue': 11, 'read_op': 11, 'exec_begin': 12, 'exec_end': 12, 'write_back': 13, 'finished': 14}
+sw None $5 $4	{'issue': 12, 'read_op': 12, 'exec_begin': 13, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+addi $4 $4 4	{'issue': 13, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}

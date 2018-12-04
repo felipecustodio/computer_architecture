@@ -1,148 +1,472 @@
-Issued lw
+Parsing source code...
+0 lw $2 $4 None
+1 addi $2 $2 INC1
+2 lw $3 $4 None
+3 addi $3 $3 INC2
+4 add $5 $2 $3
+5 sw None $5 $4
+6 addi $4 $4 4
 
 [CLOCK 1]
-Instruction lw is at stage 1
-Advancing lw
+Issued lw
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$2	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	None	0	0	0	0	0	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 2]
-Instruction lw is at stage 2
 Read operands for lw
 Can't issue addi
 
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$2	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	None	0	0	0	0	0	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
+
 [CLOCK 3]
-Instruction lw is at stage 3
-Executing lw
+Can't issue addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$2	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	None	0	0	0	0	0	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 4]
-Instruction lw is at stage 4
-Executing lw
+Can't issue addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$2	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	None	0	0	0	0	0	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 5]
-Instruction lw is at stage 5
 Write back for lw
-Successful write-back for lw
-Issued addi
-Instruction addi is at stage 1
-Advancing addi
+Can't issue addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$2	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	None	0	0	0	0	0	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 6]
-Instruction addi is at stage 2
+Finished with lw
+Issued addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	False	lw	$2	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$2	$2	INC1	False	False	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
+
+[CLOCK 7]
 Read operands for addi
 Issued lw
 
-[CLOCK 7]
-Instruction lw is at stage 1
-Advancing lw
-Instruction addi is at stage 3
-Executing addi
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$3	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$2	$2	INC1	False	False	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 8]
-Instruction lw is at stage 2
-Read operands for lw
+Read operands for addi
 Can't issue addi
-Instruction addi is at stage 5
-Write back for addi
-Successful write-back for addi
-Can't issue addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$3	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$2	$2	INC1	False	False	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 9]
-Instruction lw is at stage 3
-Executing lw
+Write back for addi
+Can't issue addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$3	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$2	$2	INC1	False	False	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 10]
-Instruction lw is at stage 4
-Executing lw
+Finished with addi
+Can't issue addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$3	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$2	$2	INC1	False	False	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 11]
-Instruction lw is at stage 5
 Write back for lw
-Successful write-back for lw
-Issued addi
-Instruction addi is at stage 1
-Advancing addi
+Can't issue addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	lw	$3	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$2	$2	INC1	False	False	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 12]
-Instruction addi is at stage 2
-Read operands for addi
-Issued add
-Instruction add is at stage 1
-Advancing add
+Finished with lw
+Issued addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	False	lw	$3	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$3	$3	INC2	False	False	False	False
+ALU1	
+	False	None	0	0	0	0	0	False	False
 
 [CLOCK 13]
-Instruction addi is at stage 3
-Executing addi
-Instruction add is at stage 2
-Read operands for add
-Issued sw
+Read operands for addi
+Issued add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	False	lw	$3	$4	None	False	False	False	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$3	$3	INC2	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 14]
-Instruction sw is at stage 1
-Advancing sw
-Instruction addi is at stage 5
-Write back for addi
-Successful write-back for addi
-Issued addi
-Instruction add is at stage 3
-Executing add
+Failed to read operands for add
+Issued sw
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$3	$3	INC2	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 15]
-Instruction sw is at stage 2
-Read operands for sw
-Instruction addi is at stage 1
-Advancing addi
-Instruction add is at stage 5
 Write back for add
-Successful write-back for add
+Failed to read operands for add
+Failed to read operands for add
+Can't issue addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$3	$3	INC2	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 16]
-Instruction sw is at stage 3
-Executing sw
-Instruction addi is at stage 2
-Read operands for addi
+Finished with add
+Failed to read operands for add
+Read operands for add
+Issued addi
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 17]
-Instruction sw is at stage 4
-Executing sw
-Instruction addi is at stage 3
-Executing addi
+Failed to read operands for add
+Read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 18]
-Instruction sw is at stage 5
-Write back for sw
-Successful write-back for sw
-Instruction addi is at stage 5
-Write back for addi
-Successful write-back for addi
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 19]
+Write back for add
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	True	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 20]
+Finished with add
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 21]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 22]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 23]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 24]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 25]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 26]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 27]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 28]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 29]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 30]
+Failed to write back for add
+Failed to read operands for add
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	
+	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	
+	False	None	0	0	0	0	0	False	False
+ALU0	
+	False	addi	$4	$4	4	False	False	False	False
+ALU1	
+	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 31]
-lw $2 $4 None	{1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
-addi $2 $2 INC1	{1: 5, 2: 6, 3: 7, 4: 7, 5: 8}
-lw $3 $4 None	{1: 7, 2: 8, 3: 9, 4: 10, 5: 11}
-addi $3 $3 INC2	{1: 11, 2: 12, 3: 13, 4: 13, 5: 14}
-add $5 $2 $3	{1: 12, 2: 13, 3: 14, 4: 14, 5: 15}
-sw None $5 $4	{1: 14, 2: 15, 3: 16, 4: 17, 5: 18}
-addi $4 $4 4	{1: 15, 2: 16, 3: 17, 4: 17, 5: 18}
+
+Execution finished.
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 14, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
