@@ -215,26 +215,31 @@ def execute(unit):
 
 
 def write_back(unit):
-    # wait until (∀f {(Fj[f]≠Fi[FU] OR Rj[f]=No) AND (Fk[f]≠Fi[FU] OR Rk[f]=No)})
-    # check all functional units for availability of source operands
     unit = unit[0]
-
+    # check all functional units for availability of source operands
     for functional_unit in (ld_units + al_units):
         FU = functional_unit[0]
-        # erro provavelmente aqui
-        if ((FU.fj == unit.fi) and (FU.rj)) or ((FU.fk != unit.fi) and (FU.rk)):
+        # wait until (∀f {(Fj[f]≠Fi[FU] OR Rj[f]=No) AND (Fk[f]≠Fi[FU] OR Rk[f]=No)})
+        if (not ((FU.fj != unit.fi or (not FU.rj)) and (FU.fk != unit.fi or (not FU.rk)))):
             return False
+        
+        # if ((FU.fj == unit.fi) and (FU.rj)) or ((FU.fk == unit.fi) and (FU.rk)):
+            # return False
 
+    # clear all functional units where this one is flagged as being used
     for functional_unit in (ld_units + al_units):
         FU = functional_unit[0]
         if (FU.qj == unit):
-            FU.rj = True
+            FU.rj = False
         if (FU.qk == unit):
-            FU.rk = True
+            FU.rk = False
     
+    # clear register being written
     result[unit.fi] = False
+    # flag unit as free for using
     unit.busy = False
     return True
+
 
 def loop():
     global instruction_index

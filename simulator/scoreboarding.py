@@ -1,9 +1,10 @@
-from pyfiglet import Figlet
 import logging
 logging.basicConfig(filename='log.log',filemode='w',format='%(message)s',level=logging.DEBUG)
 
 class Unit:
+    """ Describes a functional unit """
     def __init__(self):
+        """ Constructor """
         self.busy = False
         self.op = None
         self.fi = 0
@@ -15,42 +16,42 @@ class Unit:
         self.rk = False
 
     def print(self):
+        """ Display status """
         logging.debug(str(self.busy)+"\t"+str(self.op)+"\t"+str(self.fi)+"\t"+str(self.fj)+"\t"+str(self.fk)+"\t"+str(self.qj)+"\t"+str(self.qk)+"\t"+str(self.rj)+"\t"+str(self.rk))
 
 class Instruction:
+    """ Describes an instruction and its stages """
     def __init__(self, index, op, dst, src1, src2):
+        """ Constructor """
         self.index = index
         # operands
         self.op = op
         self.dst = dst
         self.src1 = src1
         self.src2 = src2
-        # clock cycles
-        # self.issue = 0
-        # self.read = 0
-        # self.execution = 0
-        # self.write = 0
-        # stages
+        # clock cycles / stages
         # issue, read_op, exec_begin, exec_end, write_back
         self.stages = {1:0,2:0,3:0,4:0,5:0}
         self.current_stage = 1
 
     def print(self):
+        """ Display status """
         logging.debug(self.op + " " + str(self.dst) + " " + str(self.src1) + " " + str(self.src2) + "\t" + str(self.stages))
 
 # clock
 clock = 1
 
 # code
-instruction_index = 0
-instructions = []
+instruction_index = 0 # current instruction
+instructions = [] # stores all parsed instructions
 
 # operations
 memory_operations = ['lw', 'sw']
 arithmetic_operations = ['add', 'addi', 'mult', 'div']
 
-delay_ldu = 1
-delay_alu = 0
+# execution delays
+delay_ldu = 1 # how long does a memory operation take
+delay_alu = 0 # how long does a arithmetic operation take
 
 result = dict.fromkeys(['$2','$3','$4','$5'], False) # results registers
 
@@ -59,6 +60,7 @@ al_units = [[Unit(), None], [Unit(), None]] # arithmetic units
 
 
 def status():
+    """ Logs the current status of everything """
     logging.debug("\nREGISTERS:")
     logging.debug(result)
 
@@ -73,6 +75,14 @@ def status():
 
 
 def unit_available(instruction):
+    """ Checks if there's an available functional unit
+    
+    Arguments:
+        instruction {Instruction} -- Instruction object
+    
+    Returns:
+        Unit  -- Reference to the available unit, if it exists
+    """
     global ld_units
     global al_units
 
@@ -90,6 +100,15 @@ def unit_available(instruction):
 
 
 def issue(instruction):
+    """ Issue an instruction to the pipeline
+    
+    Arguments:
+        instruction {Instruction} -- Instruction to be issued
+    
+    Returns:
+        Boolean -- Issue was successful or not
+    """
+    # wait until (!Busy[FU] AND !Result[dst])
     # check if unit is available
     unit = unit_available(instruction)
 
@@ -130,6 +149,15 @@ def issue(instruction):
 
 
 def read_operands(unit):
+    """ Read operands for an instruction
+    
+    Arguments:
+        unit {[Unit, Instruction]} -- Unit and Instruction to be checked
+    
+    Returns:
+        Boolean -- Read operands was successful or not
+    """
+
     FU = unit[0]
     if ((FU.rj) or (FU.rk)):
         # waiting for results
@@ -141,6 +169,13 @@ def read_operands(unit):
 
 
 def execute(unit):
+    """ Execution stage for instruction, applies
+        clock delay if necessary, depending on the
+        instruction type
+    
+    Arguments:
+        unit {[Unit, Instruction]} -- Unit and Instruction to be checked
+    """
     # store current cycle in current stage
     # of the instruction this FU is handling
     global instruction_index
@@ -149,100 +184,54 @@ def execute(unit):
     instruction = unit[1]
     logging.debug("Instruction " + instruction.op + " is at stage " + str(instruction.current_stage))
 
-    # check if execution is complete
-    if (instruction.current_stage == 5):
-        # instruction finished, write back and clear 
-        logging.debug("Write back for " + instruction.op)
-        if (write_back(unit)):
-            logging.debug("Successful write-back for " + instruction.op)
-            instruction.stages[instruction.current_stage] = clock
-            instruction.current_stage += 1
-            # possível erro
-            # try to issue a new instruction
-            if (instruction_index < len(instructions)):
-                instruction = instructions[instruction_index]
-                if (issue(instruction)):
-                    logging.debug("Issued " + instruction.op)
-                    instruction_index += 1
-                else:
-                    logging.debug("Can't issue " + instruction.op)
-        else:
-            logging.debug("NOT Successful write-back for " + instruction.op)
-    elif (instruction.current_stage == 2):
-        if (read_operands(unit)):
-            logging.debug("Read operands for " + instruction.op)
-            # only advance if no RAW is detected
-            instruction.stages[instruction.current_stage] = clock
-            instruction.current_stage += 1
-        else:
-            logging.debug("Can't read operands for " + instruction.op)
-        # try to issue a new instruction
-        if (instruction_index < len(instructions)):
-            instruction = instructions[instruction_index]
-            if (issue(instruction)):
-                logging.debug("Issued " + instruction.op)
-                instruction_index += 1
-            else:
-                logging.debug("Can't issue " + instruction.op)
-    elif (instruction.current_stage == 3):
-        logging.debug("Executing " + instruction.op)
-        # arithmetic operations start/finish on same clock cycle
-        if (instruction.op in arithmetic_operations):
-            instruction.stages[instruction.current_stage] = clock
-            instruction.current_stage += 1
-            instruction.stages[instruction.current_stage] = clock
-            instruction.current_stage += 1
-        else:
-            # memory operations advance one clock cycle
-            instruction.stages[instruction.current_stage] = clock
-            instruction.current_stage += 1
-    elif (instruction.current_stage == 4):
-        logging.debug("Executing " + instruction.op)
-        instruction.stages[instruction.current_stage] = clock
-        if (instruction.op in memory_operations):
-            # check delay for memory operations
-            if (instruction.stages[instruction.current_stage] - instruction.stages[3] == delay_ldu):
-                instruction.current_stage += 1
-        else:
-            # check delay for arithmetic operations
-            if (instruction.stages[instruction.current_stage] - instruction.stages[3] == delay_alu):
-                instruction.current_stage += 1
-    else:
-        # advance clock cycle
-        logging.debug("Advancing " + instruction.op)
-        instruction.stages[instruction.current_stage] = clock
-        instruction.current_stage += 1
-
 
 def write_back(unit):
+    """ Write results and removes instruction from pipeline
+    
+    Arguments:
+        unit {[Unit, Instruction] -- Unit and Instruction to be checked
+    
+    Returns:
+        Boolean -- Success
+    """
     # wait until (∀f {(Fj[f]≠Fi[FU] OR Rj[f]=No) AND (Fk[f]≠Fi[FU] OR Rk[f]=No)})
     # check all functional units for availability of source operands
     unit = unit[0]
-
+    # check all functional units for availability of source operands
     for functional_unit in (ld_units + al_units):
         FU = functional_unit[0]
-        # erro provavelmente aqui
-        if ((FU.fj == unit.fi) and (FU.rj)) or ((FU.fk != unit.fi) and (FU.rk)):
+        # wait until (∀f {(Fj[f]≠Fi[FU] OR Rj[f]=No) AND (Fk[f]≠Fi[FU] OR Rk[f]=No)})
+        if (not ((FU.fj != unit.fi or (not FU.rj)) and (FU.fk != unit.fi or (not FU.rk)))):
             return False
+        
+        # if ((FU.fj == unit.fi) and (FU.rj)) or ((FU.fk == unit.fi) and (FU.rk)):
+            # return False
 
+    # clear all functional units where this one is flagged as being used
     for functional_unit in (ld_units + al_units):
         FU = functional_unit[0]
         if (FU.qj == unit):
-            FU.rj = True
+            FU.rj = False
         if (FU.qk == unit):
-            FU.rk = True
+            FU.rk = False
     
+    # clear register being written
     result[unit.fi] = False
+    # flag unit as free for using
     unit.busy = False
     return True
 
 def loop():
+    """ Runs pipeline simulation until stop condition
+    
+    Returns:
+        Boolean -- False if reached end of simulation
+    """
     global instruction_index
     global clock
 
     logging.debug("\n[CLOCK " + str(clock) + "]")
 
-    # melhorar condição de saída (sério memo)
     if (clock > 30):
         print("FINISHED.")
         return False # code finished execution
@@ -258,6 +247,11 @@ def loop():
 
 
 def parse_code(code):
+    """ Parses source code to the simulation format
+    
+    Arguments:
+        code {String} -- Source code read from .asm file
+    """
     global instructions
     global instruction_index
 
@@ -285,6 +279,8 @@ def parse_code(code):
             src1 = arg2
             src2 = arg3
 
+        logging.debug(str(instruction_index) + " " + str(op) + " " + str(dest) + " " + str(src1) + " " + str(src2))
+
         instructions.append(Instruction(instruction_index, op, dest, src1, src2))
         instruction_index += 1
 
@@ -294,27 +290,15 @@ def main():
     global instruction_index
     global instructions
 
-    figlet = Figlet(font='slant')
-
+    logging.debug("Parsing source code...")
     with open('source.asm', 'r') as src:
         code = src.read()
         parse_code(code)
 
-    print(figlet.renderText('Scoreboarding'))
-
-    instruction_index = 0
-    # issue first instruction
-    if (instruction_index < len(instructions)):
-        instruction = instructions[instruction_index]
-        if (issue(instruction)):
-            logging.debug("Issued " + instruction.op)
-            instruction_index += 1
-        else:
-            logging.debug("Can't issue " + instruction.op)
-
     while(loop()):
         pass
 
+    logging.debug("\nExecution finished.")
     for instruction in instructions:
         instruction.print()
 

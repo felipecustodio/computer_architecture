@@ -1,7 +1,7 @@
 // palette
 // https://colorhunt.co/palette/132222
 // table render
-var font, fontsize = 22
+var fontsize = 22
 var cell_width = 100;
 var cell_height = 50;
 
@@ -19,7 +19,6 @@ var rewind_button_y = 75;
 
 function preload() {
     console.log("Loading assets...")
-    font = loadFont('assets/bebas.otf');
 }
 
 function setup() {
@@ -28,7 +27,6 @@ function setup() {
     cnv.style('display', 'block');
     pixelDensity(1);
     
-    textFont(font);
     textSize(fontsize);
     textAlign(CENTER, CENTER);
 

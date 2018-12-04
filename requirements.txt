@@ -1,0 +1,2 @@
+pyfiglet==0.7.6
+Flask==1.0.2
