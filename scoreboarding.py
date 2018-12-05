@@ -152,12 +152,12 @@ def issue(instruction):
     FU.fk = instruction.src2
     
     if (instruction.src1 not in result.keys()):
-        FU.qj = False
+        FU.qj = None
     else:
         FU.qj = result[instruction.src1]
     
     if (instruction.src2 not in result.keys()):
-        FU.qk = False
+        FU.qk = None
     else:
         FU.qk = result[instruction.src2]
 
@@ -439,10 +439,4 @@ def main(code, n_ldu, n_alu, d_ldu, d_alu):
     while(loop()):
         pass
 
-    logging.debug("\nExecution finished.")
-    for instruction in instructions:
-        instruction.print()
-        
-
-if __name__ == "__main__":
-    main()
+    status()

@@ -1,8 +1,8 @@
 <p align="center">
-<img src="/static/images/score_logo.png" alt="Classical IBM" height=500px>
+<img src="/static/images/score_logo.jpg" alt="Logo" height=500px>
 </p>
 
-## Descrição do Projeto</h2>
+## Descrição do Projeto
 
 Simulação do algoritmo Scoreboarding para escalonamento de instruções em um pipeline, de forma centralizada, apresentado pela Profa. Dra. Sarita Bruschi durante a disciplina de Arquitetura de Computadores - 2018/2. 
 

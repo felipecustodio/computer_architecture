@@ -151,7 +151,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	False	lw	$2	$4	None	False	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$2	$2	INC1	False	False	False	False
+ALU0	True	addi	$2	$2	INC1	False	None	False	False
 ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 7]
@@ -176,7 +176,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	lw	$3	$4	None	False	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$2	$2	INC1	False	False	False	False
+ALU0	True	addi	$2	$2	INC1	False	None	False	False
 ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 8]
@@ -201,7 +201,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	lw	$3	$4	None	False	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$2	$2	INC1	False	False	False	False
+ALU0	True	addi	$2	$2	INC1	False	None	False	False
 ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 9]
@@ -226,7 +226,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	lw	$3	$4	None	False	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$2	$2	INC1	False	False	False	False
+ALU0	True	addi	$2	$2	INC1	False	None	False	False
 ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 10]
@@ -251,7 +251,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	lw	$3	$4	None	False	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	False	addi	$2	$2	INC1	False	False	False	False
+ALU0	False	addi	$2	$2	INC1	False	None	False	False
 ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 11]
@@ -276,7 +276,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	lw	$3	$4	None	False	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	False	addi	$2	$2	INC1	False	False	False	False
+ALU0	False	addi	$2	$2	INC1	False	None	False	False
 ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 12]
@@ -301,7 +301,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	False	lw	$3	$4	None	False	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$3	$3	INC2	False	False	False	False
+ALU0	True	addi	$3	$3	INC2	False	None	False	False
 ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 13]
@@ -326,7 +326,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	False	lw	$3	$4	None	False	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$3	$3	INC2	False	False	False	False
+ALU0	True	addi	$3	$3	INC2	False	None	False	False
 ALU1	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 14]
@@ -351,7 +351,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	ALU1	False	True	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$3	$3	INC2	False	False	False	False
+ALU0	True	addi	$3	$3	INC2	False	None	False	False
 ALU1	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 15]
@@ -378,7 +378,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	ALU1	False	True	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$3	$3	INC2	False	False	False	False
+ALU0	True	addi	$3	$3	INC2	False	None	False	False
 ALU1	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 16]
@@ -405,7 +405,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	ALU1	False	True	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$4	$4	4	False	False	False	False
+ALU0	True	addi	$4	$4	4	False	None	False	False
 ALU1	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 17]
@@ -430,7 +430,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	ALU1	False	True	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$4	$4	4	False	False	False	False
+ALU0	True	addi	$4	$4	4	False	None	False	False
 ALU1	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 18]
@@ -455,7 +455,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	ALU1	False	True	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$4	$4	4	False	False	False	False
+ALU0	True	addi	$4	$4	4	False	None	False	False
 ALU1	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 19]
@@ -481,7 +481,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	None	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	True	addi	$4	$4	4	False	False	False	False
+ALU0	True	addi	$4	$4	4	False	None	False	False
 ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 20]
@@ -505,7 +505,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	None	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU0	False	addi	$4	$4	4	False	None	False	False
 ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 21]
@@ -528,7 +528,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	None	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU0	False	addi	$4	$4	4	False	None	False	False
 ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 22]
@@ -552,7 +552,7 @@ FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
 LDU0	True	sw	None	$5	$4	None	False	False	False
 LDU1	False	None	0	0	0	None	None	False	False
-ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU0	False	addi	$4	$4	4	False	None	False	False
 ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 23]
@@ -560,7 +560,7 @@ ALU1	False	add	$5	$2	$3	False	None	False	False
 OPERATIONS:
 FINISHED.
 
-Execution finished.
+INSTRUCTIONS:
 lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
 addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
 lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
@@ -568,3 +568,13 @@ addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, '
 add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
 sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 0}
 addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: 'LDU0'}
+
+FUNCTIONAL UNITS:
+unit	busy	op	fi	fj	fk	qj	qk	rj	rk
+LDU0	True	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	None	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False

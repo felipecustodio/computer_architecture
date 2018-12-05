@@ -24,7 +24,7 @@
     <div>
         <section>
             <!-- <h1 id="tufte-css">Scoreboarding Simulator</h1> -->
-            <img src="/static/images/logo_small.png" alt="Logo" height="50%">
+            <img src="/static/images/score_logo.jpg" alt="Logo" height="50%">
             <p class="subtitle">
             <a att href=="https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=SSC0114" class="subtitle">SSC0114 - Arquitetura de Computadores</a> @ ICMC - Universidade de São Paulo.</p>
     
@@ -67,7 +67,6 @@ addi $4, $4, 4
             $('#code').click(function() {
                 var editor = ace.edit("aceEditor");
                 code = editor.getValue();
-                alert("Executando simulação...");
                 document.getElementById('code_input').value = code;
             });
         });
