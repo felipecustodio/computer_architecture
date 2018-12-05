@@ -45,6 +45,7 @@ clock = 1
 # code
 instruction_index = 0 # current instruction
 instructions = [] # stores all parsed instructions
+finished_counter = 0
 
 # operations
 memory_operations = ['lw', 'sw']
@@ -257,6 +258,8 @@ def write_back(unit):
         Boolean -- Success
     """
     global clock
+    global finished_counter
+
     instruction = unit[1]
     unit = unit[0]
 
@@ -269,6 +272,7 @@ def write_back(unit):
 
     instruction.stages["write_back"] = clock
     instruction.current_stage = "finished"
+    finished_counter += 1
 
     return True
 
@@ -313,8 +317,8 @@ def loop():
     logging.debug("\n[CLOCK " + str(clock) + "]")
     logging.debug("\nOPERATIONS:")
 
-    if (clock > 30):
-        print("FINISHED.")
+    if (finished_counter == len(instructions)):
+        logging.debug("FINISHED.")
         return False # code finished execution
 
     # execute instructions currently on pipeline
@@ -387,6 +391,8 @@ def parse_code(code):
     code = code.replace(",", "")
     for instruction in code.splitlines():
         instruction = instruction.split()
+        if (len(instruction) <= 0):
+            return
         op = instruction[0]
         arg1 = instruction[1]
         arg2 = instruction[2]
@@ -414,7 +420,7 @@ def parse_code(code):
         instruction_index += 1
 
 
-def main():
+def main(code, n_ldu, n_alu, d_ldu, d_alu):
     global clock
     global instruction_index
     global instructions
@@ -422,18 +428,12 @@ def main():
     global delay_ldu
 
     logging.debug("Parsing source code...")
-    with open('simulator/source.asm', 'r') as src:
-        code = src.read()
-        parse_code(code)
-    
-    n_ldu = int(input("Number of Memory Units: "))
-    n_alu = int(input("Number of Arithmetic Units: "))
-
-    delay_ldu = int(input("Delay of Memory instruction: "))
-    delay_alu = int(input("Delay of Arithmetic instruction: "))
+    parse_code(code)
 
     init_ldu(n_ldu)
     init_alu(n_alu)
+    delay_ldu = d_ldu
+    delay_alu = d_alu
 
     instruction_index = 0
     while(loop()):
