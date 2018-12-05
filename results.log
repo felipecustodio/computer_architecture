@@ -1,3 +1,5 @@
+ * Debugger is active!
+ * Debugger PIN: 273-209-904
 Parsing source code...
 0 lw $2 $4 None
 1 addi $2 $2 INC1
@@ -450,3 +452,8 @@ addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, '
 add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
 sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
 addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+127.0.0.1 - - [05/Dec/2018 01:26:50] "[37mGET /simulator HTTP/1.1[0m" 200 -
+127.0.0.1 - - [05/Dec/2018 01:26:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Dec/2018 01:26:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Dec/2018 01:26:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Dec/2018 01:26:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

@@ -1,6 +1,5 @@
 from flask import Flask, render_template
-
-# app = Flask(__name__, static_url_path='/static')
+import scoreboarding
 
 app = Flask(__name__)
 app._static_folder = "static"
@@ -11,6 +10,7 @@ def home():
 
 @app.route("/simulator")
 def about():
+    scoreboarding.main()
     return render_template("simulator.html")
 
 if __name__ == "__main__":

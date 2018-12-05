@@ -1,5 +1,5 @@
 import logging
-# logging.basicConfig(filename='results.log',filemode='w',format='%(message)s',level=print)
+logging.basicConfig(filename='results.log',filemode='w',format='%(message)s',level=logging.DEBUG)
 
 class Unit:
     """ Describes a functional unit """
@@ -18,7 +18,7 @@ class Unit:
 
     def print(self):
         """ Display status """
-        print("\t"+str(self.busy)+"\t"+str(self.op)+"\t"+str(self.fi)+"\t"+str(self.fj)+"\t"+str(self.fk)+"\t"+str(self.qj)+"\t"+str(self.qk)+"\t"+str(self.rj)+"\t"+str(self.rk))
+        logging.debug("\t"+str(self.busy)+"\t"+str(self.op)+"\t"+str(self.fi)+"\t"+str(self.fj)+"\t"+str(self.fk)+"\t"+str(self.qj)+"\t"+str(self.qk)+"\t"+str(self.rj)+"\t"+str(self.rk))
 
 class Instruction:
     """ Describes an instruction and its stages """
@@ -37,7 +37,7 @@ class Instruction:
 
     def print(self):
         """ Display status """
-        print(self.op + " " + str(self.dst) + " " + str(self.src1) + " " + str(self.src2) + "\t" + str(self.stages))
+        logging.debug(self.op + " " + str(self.dst) + " " + str(self.src1) + " " + str(self.src2) + "\t" + str(self.stages))
 
 # clock
 clock = 1
@@ -74,16 +74,16 @@ def init_alu(number):
 
 def status():
     """ Logs the current status of everything """
-    # print("\nREGISTERS:")
-    # print(result)
+    # logging.debug("\nREGISTERS:")
+    # logging.debug(result)
 
-    print("\nFUNCTIONAL UNITS:")
-    print("unit\tbusy\top\tfi\tfj\tfk\tqj\tqk\trj\trk")
+    logging.debug("\nFUNCTIONAL UNITS:")
+    logging.debug("unit\tbusy\top\tfi\tfj\tfk\tqj\tqk\trj\trk")
     for index, unit in enumerate(ld_units):
-        print("LDU" + str(index) + "\t")
+        logging.debug("LDU" + str(index) + "\t")
         unit[0].print()
     for index, unit in enumerate(al_units):
-        print("ALU" + str(index) + "\t")
+        logging.debug("ALU" + str(index) + "\t")
         unit[0].print()
 
 
@@ -297,7 +297,7 @@ def loop():
     global instruction_index
     global clock
 
-    print("\n[CLOCK " + str(clock) + "]")
+    logging.debug("\n[CLOCK " + str(clock) + "]")
 
     if (clock > 30):
         print("FINISHED.")
@@ -326,31 +326,31 @@ def loop():
     # execute current instruction
     for functional_unit in to_finish:
         finished(functional_unit)
-        print("Finished with " + current_instruction.op)
+        logging.debug("Finished with " + current_instruction.op)
 
     for functional_unit in to_write:
         if (write_back(functional_unit)):
-            print("Write back for " + current_instruction.op)
+            logging.debug("Write back for " + current_instruction.op)
         else:
-            print("Failed to write back for " + current_instruction.op)
+            logging.debug("Failed to write back for " + current_instruction.op)
 
     for functional_unit in to_execute:
         execute(functional_unit)
 
     for functional_unit in to_read:
         if (read_operands(functional_unit)):
-            print("Read operands for " + current_instruction.op)
+            logging.debug("Read operands for " + current_instruction.op)
         else:
-            print("Failed to read operands for " + current_instruction.op)
+            logging.debug("Failed to read operands for " + current_instruction.op)
 
     # try to issue new instruction
     if (instruction_index < len(instructions)):
         instruction = instructions[instruction_index]
         if (issue(instruction)):
-            print("Issued " + instruction.op)
+            logging.debug("Issued " + instruction.op)
             instruction_index += 1
         else:
-            print("Can't issue " + instruction.op)
+            logging.debug("Can't issue " + instruction.op)
 
     status()
 
@@ -392,7 +392,7 @@ def parse_code(code):
             src1 = arg2
             src2 = arg3
 
-        print(str(instruction_index) + " " + str(op) + " " + str(dest) + " " + str(src1) + " " + str(src2))
+        logging.debug(str(instruction_index) + " " + str(op) + " " + str(dest) + " " + str(src1) + " " + str(src2))
 
         instructions.append(Instruction(instruction_index, op, dest, src1, src2))
         instruction_index += 1
@@ -403,8 +403,8 @@ def main():
     global instruction_index
     global instructions
 
-    print("Parsing source code...")
-    with open('source.asm', 'r') as src:
+    logging.debug("Parsing source code...")
+    with open('simulator/source.asm', 'r') as src:
         code = src.read()
         parse_code(code)
 
@@ -412,9 +412,10 @@ def main():
     while(loop()):
         pass
 
-    print("\nExecution finished.")
+    logging.debug("\nExecution finished.")
     for instruction in instructions:
         instruction.print()
+        
 
 if __name__ == "__main__":
     main()
