@@ -18,7 +18,7 @@ class Unit:
 
     def print(self):
         """ Display status """
-        logging.debug("\t"+str(self.busy)+"\t"+str(self.op)+"\t"+str(self.fi)+"\t"+str(self.fj)+"\t"+str(self.fk)+"\t"+str(self.qj)+"\t"+str(self.qk)+"\t"+str(self.rj)+"\t"+str(self.rk))
+        logging.debug(self.name+"\t"+str(self.busy)+"\t"+str(self.op)+"\t"+str(self.fi)+"\t"+str(self.fj)+"\t"+str(self.fk)+"\t"+str(self.qj)+"\t"+str(self.qk)+"\t"+str(self.rj)+"\t"+str(self.rk))
 
 class Instruction:
     """ Describes an instruction and its stages """
@@ -56,35 +56,42 @@ delay_alu = 0 # how long does a arithmetic operation take
 
 result = dict.fromkeys(['$2','$3','$4','$5', None], False) # results registers
 
-ld_units = [[Unit("LDU0"), None], [Unit("LDU1"), None]] # memory units
-al_units = [[Unit("ALU0"), None], [Unit("ALU1"), None]] # arithmetic units
-
+# ld_units = [[Unit("LDU0"), None], [Unit("LDU1"), None]] # memory units
+# al_units = [[Unit("ALU0"), None], [Unit("ALU1"), None]] # arithmetic units
+ld_units = []
+al_units = []
 
 def init_ldu(number):
+    global ld_units
     for i in range(number):
         name = "LDU" + str(i)
         ld_units.append([Unit(name), None])
 
 
 def init_alu(number):
+    global al_units
     for i in range(number):
         name = "ALU" + str(i)
         al_units.append([Unit(name), None])
 
 
 def status():
+    global instructions
     """ Logs the current status of everything """
-    # logging.debug("\nREGISTERS:")
-    # logging.debug(result)
+    logging.debug("\nINSTRUCTIONS:")
+    for instruction in instructions:
+        instruction.print()
+    
+    logging.debug("\nREGISTERS:")
+    logging.debug(result)
 
     logging.debug("\nFUNCTIONAL UNITS:")
     logging.debug("unit\tbusy\top\tfi\tfj\tfk\tqj\tqk\trj\trk")
-    for index, unit in enumerate(ld_units):
-        logging.debug("LDU" + str(index) + "\t")
+    for unit in ld_units:
         unit[0].print()
-    for index, unit in enumerate(al_units):
-        logging.debug("ALU" + str(index) + "\t")
+    for unit in al_units:
         unit[0].print()
+
 
 
 def unit_available(instruction):
@@ -267,6 +274,12 @@ def write_back(unit):
 
 
 def finished(unit):
+    """ Clears functional unit after write-back
+    
+    Arguments:
+        unit {Unit} -- Unit to be cleared
+    """
+
     instruction = unit[1]
     unit = unit[0]
 
@@ -298,17 +311,20 @@ def loop():
     global clock
 
     logging.debug("\n[CLOCK " + str(clock) + "]")
+    logging.debug("\nOPERATIONS:")
 
     if (clock > 30):
         print("FINISHED.")
         return False # code finished execution
 
     # execute instructions currently on pipeline
+    # order by stage
     to_finish = []
     to_write = []
     to_execute = []
     to_read = []
 
+    # group instructions in execution by their stage
     for functional_unit in (ld_units + al_units):
         if (functional_unit[0].busy):
             current_instruction = functional_unit[1]
@@ -402,11 +418,22 @@ def main():
     global clock
     global instruction_index
     global instructions
+    global delay_alu
+    global delay_ldu
 
     logging.debug("Parsing source code...")
     with open('simulator/source.asm', 'r') as src:
         code = src.read()
         parse_code(code)
+    
+    n_ldu = int(input("Number of Memory Units: "))
+    n_alu = int(input("Number of Arithmetic Units: "))
+
+    delay_ldu = int(input("Delay of Memory instruction: "))
+    delay_alu = int(input("Delay of Arithmetic instruction: "))
+
+    init_ldu(n_ldu)
+    init_alu(n_alu)
 
     instruction_index = 0
     while(loop()):

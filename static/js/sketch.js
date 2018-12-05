@@ -10,8 +10,6 @@ var mPressed = false;
 var clock = 0;
 
 // ui
-const windchime = new Windchime();
-var clock_sound, init_sound, dada_sound, write_sound;
 var clock_button_x = 1525;
 var clock_button_y = 75;
 var rewind_button_x = 1200;
@@ -33,8 +31,6 @@ function setup() {
     w = width + 16;
     dx = (TWO_PI / period) * xspacing;
     yvalues = new Array(floor(400/xspacing));
-
-    windchime.soundNewUser();
 }
 
 function windowResized() {
@@ -260,9 +256,5 @@ function mouseClicked() {
             clock -= 1;
             theta_speed = map(clock, 0, 30, 0.01, 0.2);
         }
-    }
-
-    if (clock == 30) {
-        windchime.soundNewUser();
     }
 }

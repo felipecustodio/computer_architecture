@@ -1,5 +1,3 @@
- * Debugger is active!
- * Debugger PIN: 273-209-904
 Parsing source code...
 0 lw $2 $4 None
 1 addi $2 $2 INC1
@@ -10,439 +8,741 @@ Parsing source code...
 6 addi $4 $4 4
 
 [CLOCK 1]
+
+OPERATIONS:
 Issued lw
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $2 $2 INC1	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+lw $3 $4 None	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'LDU0', '$3': False, '$4': False, '$5': False, None: False}
 
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$2	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	None	0	0	0	None	None	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$2	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	None	0	0	0	None	None	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 2]
+
+OPERATIONS:
 Read operands for lw
 Can't issue addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $2 $2 INC1	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+lw $3 $4 None	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'LDU0', '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$2	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	None	0	0	0	None	None	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$2	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	None	0	0	0	None	None	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 3]
+
+OPERATIONS:
 Can't issue addi
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $2 $2 INC1	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+lw $3 $4 None	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'LDU0', '$3': False, '$4': False, '$5': False, None: False}
 
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$2	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	None	0	0	0	None	None	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$2	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	None	0	0	0	None	None	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 4]
+
+OPERATIONS:
 Can't issue addi
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 0, 'finished': 0}
+addi $2 $2 INC1	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+lw $3 $4 None	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'LDU0', '$3': False, '$4': False, '$5': False, None: False}
 
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$2	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	None	0	0	0	None	None	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$2	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	None	0	0	0	None	None	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 5]
+
+OPERATIONS:
 Write back for lw
 Can't issue addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 0}
+addi $2 $2 INC1	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+lw $3 $4 None	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'LDU0', '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$2	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	None	0	0	0	None	None	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$2	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	None	0	0	0	None	None	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 6]
+
+OPERATIONS:
 Finished with lw
 Issued addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+lw $3 $4 None	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'ALU0', '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	lw	$2	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$2	$2	INC1	False	False	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	False	lw	$2	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$2	$2	INC1	False	False	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 7]
+
+OPERATIONS:
 Read operands for addi
 Issued lw
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+lw $3 $4 None	{'issue': 7, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'ALU0', '$3': 'LDU0', '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$3	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$2	$2	INC1	False	False	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$3	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$2	$2	INC1	False	False	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 8]
+
+OPERATIONS:
 Read operands for addi
 Can't issue addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 0, 'finished': 0}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'ALU0', '$3': 'LDU0', '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$3	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$2	$2	INC1	False	False	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$3	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$2	$2	INC1	False	False	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 9]
+
+OPERATIONS:
 Write back for addi
 Can't issue addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 0}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': 'ALU0', '$3': 'LDU0', '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$3	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$2	$2	INC1	False	False	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$3	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$2	$2	INC1	False	False	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 10]
+
+OPERATIONS:
 Finished with addi
 Can't issue addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 0, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': 'LDU0', '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$3	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$2	$2	INC1	False	False	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$3	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$2	$2	INC1	False	False	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 11]
+
+OPERATIONS:
 Write back for lw
 Can't issue addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 0}
+addi $3 $3 INC2	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': 'LDU0', '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	lw	$3	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$2	$2	INC1	False	False	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	True	lw	$3	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$2	$2	INC1	False	False	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 12]
+
+OPERATIONS:
 Finished with lw
 Issued addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': 'ALU0', '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	lw	$3	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$3	$3	INC2	False	False	False	False
-ALU1	
-	False	None	0	0	0	None	None	False	False
+LDU0	False	lw	$3	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$3	$3	INC2	False	False	False	False
+ALU1	False	None	0	0	0	None	None	False	False
 
 [CLOCK 13]
+
+OPERATIONS:
 Read operands for addi
 Issued add
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 13, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': 'ALU0', '$4': False, '$5': 'ALU1', None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	lw	$3	$4	None	False	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$3	$3	INC2	False	False	False	False
-ALU1	
-	True	add	$5	$2	$3	False	ALU0	False	True
+LDU0	False	lw	$3	$4	None	False	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$3	$3	INC2	False	False	False	False
+ALU1	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 14]
+
+OPERATIONS:
 Failed to read operands for add
 Issued sw
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 0, 'finished': 0}
+add $5 $2 $3	{'issue': 13, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 14, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': 'ALU0', '$4': False, '$5': 'ALU1', None: 'LDU0'}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	ALU1	False	True	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$3	$3	INC2	False	False	False	False
-ALU1	
-	True	add	$5	$2	$3	False	ALU0	False	True
+LDU0	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$3	$3	INC2	False	False	False	False
+ALU1	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 15]
+
+OPERATIONS:
 Write back for add
 Failed to read operands for add
 Failed to read operands for add
 Can't issue addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 0}
+add $5 $2 $3	{'issue': 13, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 14, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 0, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': 'ALU0', '$4': False, '$5': 'ALU1', None: 'LDU0'}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	ALU1	False	True	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$3	$3	INC2	False	False	False	False
-ALU1	
-	True	add	$5	$2	$3	False	ALU0	False	True
+LDU0	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$3	$3	INC2	False	False	False	False
+ALU1	True	add	$5	$2	$3	False	ALU0	False	True
 
 [CLOCK 16]
+
+OPERATIONS:
 Finished with add
 Failed to read operands for add
 Read operands for add
 Issued addi
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 14, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 16, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': 'ALU0', '$5': 'ALU1', None: 'LDU0'}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	ALU1	False	True	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$4	$4	4	False	False	False	False
-ALU1	
-	True	add	$5	$2	$3	False	None	False	False
+LDU0	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$4	$4	4	False	False	False	False
+ALU1	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 17]
+
+OPERATIONS:
 Failed to read operands for add
 Read operands for add
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 0, 'finished': 0}
+sw None $5 $4	{'issue': 14, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': 'ALU0', '$5': 'ALU1', None: 'LDU0'}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	ALU1	False	True	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$4	$4	4	False	False	False	False
-ALU1	
-	True	add	$5	$2	$3	False	None	False	False
+LDU0	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$4	$4	4	False	False	False	False
+ALU1	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 18]
+
+OPERATIONS:
 Write back for add
 Failed to read operands for add
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 0}
+sw None $5 $4	{'issue': 14, 'read_op': 0, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 0, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': 'ALU0', '$5': 'ALU1', None: 'LDU0'}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	ALU1	False	True	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$4	$4	4	False	False	False	False
-ALU1	
-	True	add	$5	$2	$3	False	None	False	False
+LDU0	True	sw	None	$5	$4	ALU1	False	True	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$4	$4	4	False	False	False	False
+ALU1	True	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 19]
+
+OPERATIONS:
 Finished with add
 Write back for add
 Read operands for add
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 0, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 0}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': 'ALU0', '$5': False, None: 'LDU0'}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	True	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	True	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	True	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 20]
+
+OPERATIONS:
 Finished with addi
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 0, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: 'LDU0'}
 
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	True	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 21]
 
+OPERATIONS:
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 0, 'finished': 0}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: 'LDU0'}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	True	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 22]
+
+OPERATIONS:
 Write back for sw
 
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 0}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: 'LDU0'}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	True	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	True	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 23]
+
+OPERATIONS:
 Finished with sw
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: False}
 
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	False	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 24]
 
+OPERATIONS:
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	False	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 25]
 
+OPERATIONS:
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	False	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 26]
 
+OPERATIONS:
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	False	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 27]
 
+OPERATIONS:
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	False	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 28]
 
+OPERATIONS:
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	False	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 29]
 
+OPERATIONS:
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	False	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 30]
 
+OPERATIONS:
+
+INSTRUCTIONS:
+lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
+addi $2 $2 INC1	{'issue': 6, 'read_op': 7, 'exec_begin': 8, 'exec_end': 8, 'write_back': 9, 'finished': 10}
+lw $3 $4 None	{'issue': 7, 'read_op': 8, 'exec_begin': 9, 'exec_end': 10, 'write_back': 11, 'finished': 12}
+addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, 'write_back': 15, 'finished': 16}
+add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
+sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
+addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
+
+REGISTERS:
+{'$2': False, '$3': False, '$4': False, '$5': False, None: False}
+
 FUNCTIONAL UNITS:
 unit	busy	op	fi	fj	fk	qj	qk	rj	rk
-LDU0	
-	False	sw	None	$5	$4	None	False	False	False
-LDU1	
-	False	None	0	0	0	None	None	False	False
-ALU0	
-	False	addi	$4	$4	4	False	False	False	False
-ALU1	
-	False	add	$5	$2	$3	False	None	False	False
+LDU0	False	sw	None	$5	$4	None	False	False	False
+LDU1	False	None	0	0	0	None	None	False	False
+ALU0	False	addi	$4	$4	4	False	False	False	False
+ALU1	False	add	$5	$2	$3	False	None	False	False
 
 [CLOCK 31]
+
+OPERATIONS:
 
 Execution finished.
 lw $2 $4 None	{'issue': 1, 'read_op': 2, 'exec_begin': 3, 'exec_end': 4, 'write_back': 5, 'finished': 6}
@@ -452,8 +752,3 @@ addi $3 $3 INC2	{'issue': 12, 'read_op': 13, 'exec_begin': 14, 'exec_end': 14, '
 add $5 $2 $3	{'issue': 13, 'read_op': 16, 'exec_begin': 17, 'exec_end': 17, 'write_back': 18, 'finished': 19}
 sw None $5 $4	{'issue': 14, 'read_op': 19, 'exec_begin': 20, 'exec_end': 21, 'write_back': 22, 'finished': 23}
 addi $4 $4 4	{'issue': 16, 'read_op': 17, 'exec_begin': 18, 'exec_end': 18, 'write_back': 19, 'finished': 20}
-127.0.0.1 - - [05/Dec/2018 01:26:50] "[37mGET /simulator HTTP/1.1[0m" 200 -
-127.0.0.1 - - [05/Dec/2018 01:26:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-127.0.0.1 - - [05/Dec/2018 01:26:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-127.0.0.1 - - [05/Dec/2018 01:26:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-127.0.0.1 - - [05/Dec/2018 01:26:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
