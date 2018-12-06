@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, send_file
 import scoreboarding
-import pandas as pd
 
 import logging
 log = logging.getLogger('werkzeug')
@@ -23,7 +22,7 @@ def post():
     alu_delay = int(request.form['alu_delay'])
     # execute simulation
     scoreboarding.main(source, ldu_units, alu_units, ldu_delay, alu_delay)
-    return render_template("table.html")
+    return render_template("results.html")
 
 @app.route("/simulator/download")
 def DownloadLogFile(path = None):

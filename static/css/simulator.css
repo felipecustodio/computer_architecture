@@ -1,14 +1,16 @@
 body {
   margin: 0;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 
   justify-content: center;
   align-items: center;
 
-  width: 100% !important;
-  height: auto !important;
+  /* width: 100% !important; */
+  /* height: auto !important; */
 
-  zoom: 1.0;
+  /* zoom: 1.0; */
 }
 
 ul {
@@ -41,4 +43,11 @@ a:hover {
 
 h1:hover {
   color: #f67280;
+}
+
+th tr {
+  left: 0; top: 0;
+  position: absolute;
+  width: auto;
+  display: block !important;
 }

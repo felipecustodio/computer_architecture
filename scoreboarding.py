@@ -20,6 +20,11 @@ class Unit:
         """ Display status """
         logging.debug(self.name+"\t"+str(self.busy)+"\t"+str(self.op)+"\t"+str(self.fi)+"\t"+str(self.fj)+"\t"+str(self.fk)+"\t"+str(self.qj)+"\t"+str(self.qk)+"\t"+str(self.rj)+"\t"+str(self.rk))
 
+    def to_html(self):
+        """ Display status for HTML parses """
+        return [self.name,str(self.busy),str(self.op),str(self.fi),str(self.fj),str(self.fk),str(self.qj),str(self.qk),str(self.rj),str(self.rk)]
+
+
 class Instruction:
     """ Describes an instruction and its stages """
     def __init__(self, index, op, dst, src1, src2):
@@ -39,6 +44,10 @@ class Instruction:
         """ Display status """
         logging.debug(self.op + " " + str(self.dst) + " " + str(self.src1) + " " + str(self.src2) + "\t" + str(self.stages))
 
+    def to_html(self):
+        """ Display for HTML parser """
+        return (self.op + " " + str(self.dst) + " " + str(self.src1) + " " + str(self.src2))
+
 # clock
 clock = 1
 
@@ -55,12 +64,19 @@ arithmetic_operations = ['add', 'addi', 'mult', 'div']
 delay_ldu = 1 # how long does a memory operation take
 delay_alu = 0 # how long does a arithmetic operation take
 
+# result registers
 result = dict.fromkeys(['$2','$3','$4','$5', None], False) # results registers
 
-# ld_units = [[Unit("LDU0"), None], [Unit("LDU1"), None]] # memory units
-# al_units = [[Unit("ALU0"), None], [Unit("ALU1"), None]] # arithmetic units
+# functional units
 ld_units = []
 al_units = []
+
+# html to display results
+html = ""
+header_units = ['name','busy', 'op', 'fi', 'fj', 'fk', 'fj', 'fk', 'qj', 'qk', 'rj', 'rk']
+header_inst = ['inst', 'issue', 'read_op', 'exec_begin', 'exec_end', 'write_back']
+header_regs = ['register', 'status']
+
 
 def init_ldu(number):
     global ld_units
@@ -77,23 +93,91 @@ def init_alu(number):
 
 
 def status():
-    global instructions
     """ Logs the current status of everything """
+    global html
+    global instructions
+
+
+    instructions_table = []
+
+    regs_table = []
+
+    units_table = []
+
     logging.debug("\nINSTRUCTIONS:")
     for instruction in instructions:
         instruction.print()
+        instruction_row = [instruction.to_html(), instruction.stages["issue"], instruction.stages["read_op"], instruction.stages["exec_begin"], instruction.stages["exec_end"], instruction.stages["write_back"]]
+        instructions_table.append(instruction_row)
     
     logging.debug("\nREGISTERS:")
     logging.debug(result)
+    for key, value in result.items():
+        regs_table.append([key, value])
 
     logging.debug("\nFUNCTIONAL UNITS:")
     logging.debug("unit\tbusy\top\tfi\tfj\tfk\tqj\tqk\trj\trk")
     for unit in ld_units:
         unit[0].print()
+        unit_row = unit[0].to_html()
+        units_table.append(unit_row)
     for unit in al_units:
         unit[0].print()
+        unit_row = unit[0].to_html()
+        units_table.append(unit_row)
 
+    html += '<h2>SCOREBOARD</h2>'
 
+    html += '<div>'
+    html += '<table align="left" width="100%">'
+    html += '<tr>'
+    for item in header_inst:
+        html += '<th>' + str(item) + '</th>'
+    html += '</tr>'
+
+    for row in instructions_table:
+        html += '<tr>'
+        for item in row:
+            html += '<td>' + str(item) + '</td>'
+        html += '</tr>'
+    html +=' </table>'
+    html += '</div>'
+
+    html += '<div style = "clear:both;"></div>'
+
+    html += '<div>'
+    html += '<table align="left" width="100%">'
+    html += '<tr>'
+    for item in header_regs:
+        html += '<th>' + str(item) + '</th>'
+    html += '</tr>'
+
+    for row in regs_table:
+        html += '<tr>'
+        for item in row:
+            html += '<td>' + str(item) + '</td>'
+        html += '</tr>'
+    html +=' </table>'
+    html += '</div>'
+
+    html += '<div style = "clear:both;"></div>'
+
+    html += '<div>'
+    html += '<table align="left" width="100%">'
+    html += '<tr>'
+    for item in header_units:
+        html += '<th>' + str(item) + '</th>'
+    html += '</tr>'
+
+    for row in units_table:
+        html += '<tr>'
+        for item in row:
+            html += '<td>' + str(item) + '</td>'
+        html += '</tr>'
+    html +=' </table>'
+    html += '</div>'
+
+    html += '<div style = "clear:both;"></div>'
 
 def unit_available(instruction):
     """ Checks if there's an available functional unit
@@ -313,9 +397,13 @@ def loop():
     """
     global instruction_index
     global clock
+    global html
 
     logging.debug("\n[CLOCK " + str(clock) + "]")
+    html += '<h1>CLOCK ' + str(clock) + '</h1>'
+    
     logging.debug("\nOPERATIONS:")
+    html += '<h2>OPERATIONS</h2>'
 
     if (finished_counter == len(instructions)):
         logging.debug("FINISHED.")
@@ -347,30 +435,38 @@ def loop():
     for functional_unit in to_finish:
         finished(functional_unit)
         logging.debug("Finished with " + current_instruction.op)
+        html += "<p>Finished with " + str(current_instruction.op) + "</p>"
 
     for functional_unit in to_write:
         if (write_back(functional_unit)):
             logging.debug("Write back for " + current_instruction.op)
+            html += "<p>Write back for " + str(current_instruction.op) + "</p>"
         else:
-            logging.debug("Failed to write back for " + current_instruction.op)
+            logging.debug("Failed to write back for " + str(current_instruction.op))
+            html += "<p>Failed to write back for " + str(current_instruction.op) + "</p>"
 
     for functional_unit in to_execute:
         execute(functional_unit)
 
     for functional_unit in to_read:
         if (read_operands(functional_unit)):
-            logging.debug("Read operands for " + current_instruction.op)
+            logging.debug("Read operands for " + str(current_instruction.op))
+            html += "<p>Failed to write back for " + str(current_instruction.op) + "</p>"
+
         else:
-            logging.debug("Failed to read operands for " + current_instruction.op)
+            logging.debug("Failed to read operands for " + str(current_instruction.op))
+            html += "<p>Failed to read operands for " + str(current_instruction.op) + "</p>"
 
     # try to issue new instruction
     if (instruction_index < len(instructions)):
         instruction = instructions[instruction_index]
         if (issue(instruction)):
             logging.debug("Issued " + instruction.op)
+            html += "<p>Issued " + str(instruction.op) + "</p>"
             instruction_index += 1
         else:
             logging.debug("Can't issue " + instruction.op)
+            html += "<p>Can't issue " + str(instruction.op) + "</p>"
 
     status()
 
@@ -426,6 +522,24 @@ def main(code, n_ldu, n_alu, d_ldu, d_alu):
     global instructions
     global delay_alu
     global delay_ldu
+    global html
+
+    html += """<html><head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/simulator.css">
+    <link href="static/css/bare.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="/static/images/S.png"/>
+
+    <title>Scoreboarding</title>
+
+    <body>
+
+    <form method="get" action="/simulator/download">
+        <button type="submit"><i class="fa fa-download"></i> Download dos resultados</button>
+    </form>
+</head>"""
 
     logging.debug("Parsing source code...")
     parse_code(code)
@@ -438,5 +552,10 @@ def main(code, n_ldu, n_alu, d_ldu, d_alu):
     instruction_index = 0
     while(loop()):
         pass
-
     status()
+
+    html += """</body></html>"""
+
+    with open('templates/results.html', 'w') as file:
+        file.write(html)
+
