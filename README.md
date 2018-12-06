@@ -1,5 +1,5 @@
 <p align="center">
-<img src="/static/images/score_logo.jpg" alt="Logo" height=500px>
+<img src="/static/images/logo_small.png" alt="Logo" height=500px>
 </p>
 
 ## Descrição do Projeto
